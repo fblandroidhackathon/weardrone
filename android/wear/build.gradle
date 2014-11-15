@@ -6,7 +6,7 @@ android {
     buildToolsVersion "21.0.1"
 
     defaultConfig {
-        applicationId "caprica6.fblandroidhackathon.org.caprica6"
+        applicationId "org.fblandroidhackathon.caprica6"
         minSdkVersion 20
         targetSdkVersion 21
         versionCode 1

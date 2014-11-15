@@ -38,7 +38,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         //COMMAND_WORDS.put("noop");
         COMMAND_WORDS.put("land",Command.LAND);
         COMMAND_WORDS.put("panic",Command.LAND); //land
-        COMMAND_WORDS.put("take",Command.TAKEOFF); //take off
+        COMMAND_WORDS.put("take off",Command.TAKEOFF); //take off
         COMMAND_WORDS.put("left",Command.TURN_LEFT);
         COMMAND_WORDS.put("right",Command.TURN_RIGHT);
         COMMAND_WORDS.put("up",Command.UP);
@@ -166,8 +166,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     private String mapCommands(List<String> results) {
         for(String candidate : results) {
             for(String command : COMMAND_WORDS.keySet()) {
-                if(candidate.contains(command.toUpperCase())){
-                    sendCommand(Command.valueOf(command));
+                if(candidate.equalsIgnoreCase(command)){
+                    sendCommand(Command.valueOf(command.toUpperCase()));
                     return command;
                 }
             }

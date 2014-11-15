@@ -13,6 +13,8 @@ public enum Command {
     UP("up"),
     DOWN("down");
 
+
+    public final static String commandParseObject = "Commands";
     public final String command;
 
     private Command(String command) {

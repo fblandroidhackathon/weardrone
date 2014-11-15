@@ -31,6 +31,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         COMMAND_WORDS.put("right",Command.TURN_RIGHT);
         COMMAND_WORDS.put("up",Command.UP);
         COMMAND_WORDS.put("down",Command.DOWN);
+        COMMAND_WORDS.put("forward",Command.FORWARD);
+        COMMAND_WORDS.put("back",Command.BACK);
 /*        COMMAND_WORDS.add("degrees");
         COMMAND_WORDS.add("units");
         COMMAND_WORDS.add("execute");

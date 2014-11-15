@@ -6,14 +6,17 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.wearable.view.WatchViewStub;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements AdapterView.OnItemClickListener {
 
 
     //private static final List<String> COMMAND_WORDS = new ArrayList<String>();
@@ -65,6 +68,9 @@ public class MainActivity extends Activity {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
                 mDebugTextView = (TextView) stub.findViewById(R.id.text);
+                final GridView view = (GridView) findViewById(R.id.gridView);
+                view.setAdapter(new CommandListAdapter(MainActivity.this));
+                view.setOnItemClickListener(MainActivity.this);
             }
         });
         stub.setOnClickListener(new View.OnClickListener() {
@@ -116,5 +122,10 @@ public class MainActivity extends Activity {
     private void sendCommand(String command) {
         //TODO dispatch message to parse from here
         //CommandDispatcher.dispatch(COMMAND_WORDS.get(command)); // TODO should be dispatched from device
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 }

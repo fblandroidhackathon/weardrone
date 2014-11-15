@@ -8,8 +8,6 @@ import android.support.wearable.view.WatchViewStub;
 import android.view.View;
 import android.widget.TextView;
 
-import com.parse.Parse;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -118,6 +116,6 @@ public class MainActivity extends Activity {
 
     private void sendCommand(String command) {
         //TODO dispatch message to parse from here
-        CommandDispatcher.dispatch(COMMAND_WORDS.get(command));
+        //CommandDispatcher.dispatch(COMMAND_WORDS.get(command)); // TODO should be dispatched from device
     }
 }

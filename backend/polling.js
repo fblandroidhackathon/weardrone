@@ -3,7 +3,7 @@ var figlet = require("figlet");
 var arDrone = require('ar-drone');
 var client  = arDrone.createClient({ip: '192.168.43.238'});
 
-Parse.initialize("Ix2ujU0DFJxTmiaZGZg2fh0YuFGu9BxWqKafQhr9", "VFLuqqyqvr4ze5z3pfmXzRSn9w1ezFTMVqpuC8Sl");
+Parse.initialize("PARSE_API", "PARSE_API");
 
 var polling_interval = 400; //1 sec
 

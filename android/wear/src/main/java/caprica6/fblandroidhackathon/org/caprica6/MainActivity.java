@@ -39,18 +39,18 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         COMMAND_WORDS.put("land",Command.LAND);
         COMMAND_WORDS.put("panic",Command.LAND); //land
         COMMAND_WORDS.put("take off",Command.TAKEOFF); //take off
-        COMMAND_WORDS.put("left",Command.TURN_LEFT);
-        COMMAND_WORDS.put("right",Command.TURN_RIGHT);
+        COMMAND_WORDS.put("turn left",Command.TURN_LEFT);
+        COMMAND_WORDS.put("turn right",Command.TURN_RIGHT);
         COMMAND_WORDS.put("up",Command.UP);
         COMMAND_WORDS.put("down",Command.DOWN);
         COMMAND_WORDS.put("forward",Command.FORWARD);
         COMMAND_WORDS.put("back",Command.BACK);
+        COMMAND_WORDS.put("flip",Command.FLIP);
 /*        COMMAND_WORDS.add("degrees");
         COMMAND_WORDS.add("units");
         COMMAND_WORDS.add("execute");
         COMMAND_WORDS.add("clear"); //all commands
         COMMAND_WORDS.add("remove"); //last command
-        COMMAND_WORDS.add("flip");
         COMMAND_WORDS.add("10");
         COMMAND_WORDS.add("15");
         COMMAND_WORDS.add("20");
@@ -167,7 +167,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         for(String candidate : results) {
             for(String command : COMMAND_WORDS.keySet()) {
                 if(candidate.equalsIgnoreCase(command)){
-                    sendCommand(Command.valueOf(command.toUpperCase()));
+                    sendCommand(Command.getByName(command));
                     return command;
                 }
             }

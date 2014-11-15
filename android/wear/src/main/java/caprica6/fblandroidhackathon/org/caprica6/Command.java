@@ -2,14 +2,15 @@ package caprica6.fblandroidhackathon.org.caprica6;
 
 public enum Command {
 
-    TAKEOFF("takeoff"),
+    TAKEOFF("take off"),
     LAND("land"),
     FORWARD("forward"),
     BACK("back"),
-    MOVE_LEFT("move_left"),
-    MOVE_RIGHT("move_right"),
-    TURN_LEFT("turn_left"),
-    TURN_RIGHT("turn_right"),
+    MOVE_LEFT("move left"),
+    MOVE_RIGHT("move right"),
+    TURN_LEFT("turn left"),
+    TURN_RIGHT("turn right"),
+    FLIP("flip"),
     UP("up"),
     DOWN("down"),
     VOICE("voice"),
@@ -21,6 +22,15 @@ public enum Command {
 
     private Command(String command) {
         this.command = command;
+    }
+
+    public static Command getByName(String name) {
+        for(Command command : Command.values()){
+            if(command.command.equalsIgnoreCase(name)){
+                return command;
+            }
+        }
+        return INVALID;
     }
 
     public static Command getCommandFromPosition(int pos) {

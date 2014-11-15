@@ -10,7 +10,7 @@ public class CommandDispatcher {
 
     public static void dispatch(Command command) {
         ParseObject po = new ParseObject(Command.commandParseObject);
-        po.add("cmd", command.command);
+        po.put("cmd", command.command);
         po.saveInBackground(new LoggingSaveCallback(command));
     }
 

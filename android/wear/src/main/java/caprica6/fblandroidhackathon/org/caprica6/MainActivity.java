@@ -154,11 +154,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
 
             String foundCommand = mapCommands(results);
             String spokenText = results.get(0);
-            StringBuilder sb = new StringBuilder(mDebugTextView.getText());
-            sb.append(spokenText);
-            sb.append("->");
-            sb.append(foundCommand);
-            mDebugTextView.setText(sb.toString());
+//            StringBuilder sb = new StringBuilder(mDebugTextView.getText());
+//            sb.append(spokenText);
+//            sb.append("->");
+//            sb.append(foundCommand);
+//            mDebugTextView.setText(sb.toString());
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -166,7 +166,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     private String mapCommands(List<String> results) {
         for(String candidate : results) {
             for(String command : COMMAND_WORDS.keySet()) {
-                if(candidate.contains(command)){
+                if(candidate.contains(command.toUpperCase())){
                     sendCommand(Command.valueOf(command));
                     return command;
                 }
@@ -184,7 +184,14 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     }
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
         final Command uiCommand = Command.getCommandFromPosition(position);
-        sendCommand(uiCommand);
+        if(uiCommand.equals(Command.INVALID))
+            return;
+        if(uiCommand.equals(Command.VOICE)) {
+            displaySpeechRecognizer();
+        } else {
+            sendCommand(uiCommand);
+        }
     }
 }

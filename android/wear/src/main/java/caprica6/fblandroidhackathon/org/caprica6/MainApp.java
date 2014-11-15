@@ -9,6 +9,7 @@ public class MainApp extends Application {
     public void onCreate() {
         super.onCreate();
         Parse.initialize(this, "wheJQaJoSCeUw9URNObUoBr5Jsj7OT2uRVF4fOmB", "BdrvtqSi81saYX6wlSkJBBDlbF3euDErmafHpqPm");
+        Parse.setLogLevel(Parse.LOG_LEVEL_VERBOSE);
     }
 
 

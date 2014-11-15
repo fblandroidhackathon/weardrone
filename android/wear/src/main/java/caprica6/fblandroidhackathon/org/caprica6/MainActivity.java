@@ -26,12 +26,11 @@ public class MainActivity extends Activity {
         COMMAND_WORDS.put("land",Command.LAND);
         COMMAND_WORDS.put("panic",Command.LAND); //land
         COMMAND_WORDS.put("take",Command.TAKEOFF); //take off
-/*
-        COMMAND_WORDS.add("left");
-        COMMAND_WORDS.add("right");
-        COMMAND_WORDS.add("up");
-        COMMAND_WORDS.add("down");
-        COMMAND_WORDS.add("degrees");
+        COMMAND_WORDS.put("left",Command.TURN_LEFT);
+        COMMAND_WORDS.put("right",Command.TURN_RIGHT);
+        COMMAND_WORDS.put("up",Command.UP);
+        COMMAND_WORDS.put("down",Command.DOWN);
+/*        COMMAND_WORDS.add("degrees");
         COMMAND_WORDS.add("units");
         COMMAND_WORDS.add("execute");
         COMMAND_WORDS.add("clear"); //all commands

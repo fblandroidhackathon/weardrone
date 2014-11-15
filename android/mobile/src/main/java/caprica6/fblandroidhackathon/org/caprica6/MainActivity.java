@@ -33,7 +33,8 @@ public class MainActivity extends Activity
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CommandDispatcher.dispatch(Command.LAND);
+                // CommandDispatcher.dispatch(Command.LAND);
+                CommandDispatcher.dispatchDirectly(Command.LAND);
             }
         });
 

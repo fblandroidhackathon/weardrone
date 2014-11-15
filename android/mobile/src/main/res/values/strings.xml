@@ -7,4 +7,6 @@
     <string name="parse_app_id">Ix2ujU0DFJxTmiaZGZg2fh0YuFGu9BxWqKafQhr9</string>
     <string name="parse_client_id">SJFpNPnbBWqTHaMqR4cTwz2351MN8Tkzz2XXdgYD</string>
 
+    <string name="nabils_node">http://server.name</string>
+
 </resources>

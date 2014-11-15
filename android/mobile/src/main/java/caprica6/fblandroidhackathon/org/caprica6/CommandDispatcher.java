@@ -32,4 +32,10 @@ public class CommandDispatcher {
         }
     }
 
+    public static void dispatchDirectly(NodeService service, Command command) {
+        CommandJson commandJson = new CommandJson();
+        commandJson.cmd = command.command;
+        service.sendCommand(commandJson);
+    }
+
 }

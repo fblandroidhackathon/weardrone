@@ -11,7 +11,9 @@ public enum Command {
     TURN_LEFT("turn_left"),
     TURN_RIGHT("turn_right"),
     UP("up"),
-    DOWN("down");
+    DOWN("down"),
+    VOICE("voice"),
+    INVALID("invalid");
 
 
     public final static String commandParseObject = "Commands";
@@ -21,4 +23,20 @@ public enum Command {
         this.command = command;
     }
 
+    public static Command getCommandFromPosition(int pos) {
+        switch (pos) {
+            case 1:
+                return UP;
+            case 3:
+                return TURN_LEFT;
+            case 4:
+                return VOICE;
+            case 5:
+                return TURN_RIGHT;
+            case 7:
+                return DOWN;
+            default:
+                return INVALID;
+        }
+    }
 }

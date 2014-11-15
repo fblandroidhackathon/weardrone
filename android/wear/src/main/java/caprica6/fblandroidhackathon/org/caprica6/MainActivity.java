@@ -185,6 +185,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        final Command uiCommand = Command.getCommandFromPosition(position);
     }
 }

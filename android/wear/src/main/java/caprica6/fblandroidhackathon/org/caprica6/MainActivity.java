@@ -167,7 +167,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         for(String candidate : results) {
             for(String command : COMMAND_WORDS.keySet()) {
                 if(candidate.contains(command)){
-                    sendCommand(command);
+                    sendCommand(Command.valueOf(command));
                     return command;
                 }
             }
@@ -175,16 +175,16 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         return "noop";
     }
 
-    private void sendCommand(String command) {
+    private void sendCommand(Command command) {
         PutDataMapRequest dataMap = PutDataMapRequest.create("/drone_command");
-        dataMap.getDataMap().putString("COMMAND", command);
+        dataMap.getDataMap().putInt("COMMAND", command.ordinal());
         PutDataRequest request = dataMap.asPutDataRequest();
         PendingResult<DataApi.DataItemResult> pendingResult = Wearable.DataApi
                 .putDataItem(mGoogleApiClient, request);
     }
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         final Command uiCommand = Command.getCommandFromPosition(position);
+        sendCommand(uiCommand);
     }
 }

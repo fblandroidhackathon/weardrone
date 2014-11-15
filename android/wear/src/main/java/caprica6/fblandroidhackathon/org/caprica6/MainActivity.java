@@ -7,39 +7,45 @@ import android.speech.RecognizerIntent;
 import android.support.wearable.view.WatchViewStub;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements AdapterView.OnItemClickListener {
 
     private static final String TAG = "MainActivity";
-    private static final List<String> COMMAND_WORDS = new ArrayList<String>();
+
+    //private static final List<String> COMMAND_WORDS = new ArrayList<String>();
+    private static final Map<String,Command> COMMAND_WORDS = new HashMap<String, Command>();
 
     private GoogleApiClient mGoogleApiClient;
 
     static {
-        COMMAND_WORDS.add("noop");
-        COMMAND_WORDS.add("land");
-        COMMAND_WORDS.add("panic"); //land
-        COMMAND_WORDS.add("take"); //take off
-/*
-        COMMAND_WORDS.add("left");
-        COMMAND_WORDS.add("right");
-        COMMAND_WORDS.add("up");
-        COMMAND_WORDS.add("down");
-        COMMAND_WORDS.add("degrees");
+        //COMMAND_WORDS.put("noop");
+        COMMAND_WORDS.put("land",Command.LAND);
+        COMMAND_WORDS.put("panic",Command.LAND); //land
+        COMMAND_WORDS.put("take",Command.TAKEOFF); //take off
+        COMMAND_WORDS.put("left",Command.TURN_LEFT);
+        COMMAND_WORDS.put("right",Command.TURN_RIGHT);
+        COMMAND_WORDS.put("up",Command.UP);
+        COMMAND_WORDS.put("down",Command.DOWN);
+        COMMAND_WORDS.put("forward",Command.FORWARD);
+        COMMAND_WORDS.put("back",Command.BACK);
+/*        COMMAND_WORDS.add("degrees");
         COMMAND_WORDS.add("units");
         COMMAND_WORDS.add("execute");
         COMMAND_WORDS.add("clear"); //all commands
@@ -79,6 +85,9 @@ public class MainActivity extends Activity {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
                 mDebugTextView = (TextView) stub.findViewById(R.id.text);
+                final GridView view = (GridView) findViewById(R.id.gridView);
+                view.setAdapter(new CommandListAdapter(MainActivity.this));
+                view.setOnItemClickListener(MainActivity.this);
             }
         });
         stub.setOnClickListener(new View.OnClickListener() {
@@ -156,7 +165,7 @@ public class MainActivity extends Activity {
 
     private String mapCommands(List<String> results) {
         for(String candidate : results) {
-            for(String command : COMMAND_WORDS) {
+            for(String command : COMMAND_WORDS.keySet()) {
                 if(candidate.contains(command)){
                     sendCommand(command);
                     return command;
@@ -172,5 +181,10 @@ public class MainActivity extends Activity {
         PutDataRequest request = dataMap.asPutDataRequest();
         PendingResult<DataApi.DataItemResult> pendingResult = Wearable.DataApi
                 .putDataItem(mGoogleApiClient, request);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 }

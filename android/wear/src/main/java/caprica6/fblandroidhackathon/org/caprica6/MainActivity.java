@@ -8,19 +8,24 @@ import android.support.wearable.view.WatchViewStub;
 import android.view.View;
 import android.widget.TextView;
 
+import com.parse.Parse;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends Activity {
 
 
-    private static final List<String> COMMAND_WORDS = new ArrayList<String>();
+    //private static final List<String> COMMAND_WORDS = new ArrayList<String>();
+    private static final Map<String,Command> COMMAND_WORDS = new HashMap<String, Command>();
 
     static {
-        COMMAND_WORDS.add("noop");
-        COMMAND_WORDS.add("land");
-        COMMAND_WORDS.add("panic"); //land
-        COMMAND_WORDS.add("take"); //take off
+        //COMMAND_WORDS.put("noop");
+        COMMAND_WORDS.put("land",Command.LAND);
+        COMMAND_WORDS.put("panic",Command.LAND); //land
+        COMMAND_WORDS.put("take",Command.TAKEOFF); //take off
 /*
         COMMAND_WORDS.add("left");
         COMMAND_WORDS.add("right");
@@ -101,7 +106,7 @@ public class MainActivity extends Activity {
 
     private String mapCommands(List<String> results) {
         for(String candidate : results) {
-            for(String command : COMMAND_WORDS) {
+            for(String command : COMMAND_WORDS.keySet()) {
                 if(candidate.contains(command)){
                     sendCommand(command);
                     return command;
@@ -113,5 +118,6 @@ public class MainActivity extends Activity {
 
     private void sendCommand(String command) {
         //TODO dispatch message to parse from here
+        CommandDispatcher.dispatch(COMMAND_WORDS.get(command));
     }
 }

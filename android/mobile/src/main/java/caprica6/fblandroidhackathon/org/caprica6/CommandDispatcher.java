@@ -25,9 +25,9 @@ public class CommandDispatcher {
         @Override
         public void done(ParseException e) {
             if (e == null) {
-                Log.d("ParseWearDrone", String.format("Command %s sent", cmd.command));
+                Log.i("ParseWearDrone", String.format("Command %s sent", cmd.command));
             } else {
-                Log.d("ParseWearDrone", String.format("Command not sent due to error", e.getMessage()));
+                Log.i("ParseWearDrone", String.format("Command not sent due to error", e.getMessage()));
             }
         }
     }

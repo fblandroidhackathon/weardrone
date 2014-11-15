@@ -14,6 +14,8 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.DataEvent;
 import com.google.android.gms.wearable.DataEventBuffer;
+import com.google.android.gms.wearable.DataMap;
+import com.google.android.gms.wearable.DataMapItem;
 import com.google.android.gms.wearable.Wearable;
 
 public class MainActivity extends Activity
@@ -102,6 +104,8 @@ public class MainActivity extends Activity
     public void onDataChanged(DataEventBuffer dataEvents) {
         for (DataEvent event : dataEvents) {
             Log.e(TAG, "GOT AN EVENT: "+event.getDataItem());
+            DataMapItem dataMapItem = DataMapItem.fromDataItem(event.getDataItem());
+            CommandDispatcher.dispatch(Command.values()[(dataMapItem.getDataMap().getInt("COMMAND"))]);
         }
     }
 

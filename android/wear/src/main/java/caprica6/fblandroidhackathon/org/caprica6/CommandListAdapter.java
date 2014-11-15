@@ -45,22 +45,18 @@ public class CommandListAdapter extends BaseAdapter {
         switch (position) {
             case 1:
                 commandLabel.setText("Up");
-                commandLabel.setTag(Command.UP);
                 break;
             case 3:
                 commandLabel.setText("Left");
-                commandLabel.setTag(Command.TURN_LEFT);
                 break;
             case 4:
                 commandLabel.setText("Voice");
                 break;
             case 5:
                 commandLabel.setText("Right");
-                commandLabel.setTag(Command.TURN_RIGHT);
                 break;
             case 7:
                 commandLabel.setText("Down");
-                commandLabel.setTag(Command.DOWN);
                 break;
             default:
                 break;

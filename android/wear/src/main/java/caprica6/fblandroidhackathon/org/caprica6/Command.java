@@ -10,10 +10,10 @@ public enum Command {
     MOVE_RIGHT("move right"),
     TURN_LEFT("turn left"),
     TURN_RIGHT("turn right"),
-    FLIP("flip"),
     UP("up"),
     DOWN("down"),
     VOICE("voice"),
+    FLIP("flip"),
     INVALID("invalid");
 
 

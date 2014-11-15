@@ -2,16 +2,19 @@ package caprica6.fblandroidhackathon.org.caprica6;
 
 public enum Command {
 
-    TAKEOFF("takeoff"),
+    TAKEOFF("take off"),
     LAND("land"),
     FORWARD("forward"),
     BACK("back"),
-    MOVE_LEFT("move_left"),
-    MOVE_RIGHT("move_right"),
-    TURN_LEFT("turn_left"),
-    TURN_RIGHT("turn_right"),
+    MOVE_LEFT("move left"),
+    MOVE_RIGHT("move right"),
+    TURN_LEFT("turn left"),
+    TURN_RIGHT("turn right"),
     UP("up"),
-    DOWN("down");
+    DOWN("down"),
+    VOICE("voice"),
+    FLIP("flip"),
+    INVALID("invalid");
 
 
     public final static String commandParseObject = "Commands";
